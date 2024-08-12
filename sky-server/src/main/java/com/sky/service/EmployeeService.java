@@ -41,4 +41,17 @@ public interface EmployeeService {
 	 * @param id     需要设置的账号id
 	 */
 	void startOrStop(Integer status, Long id);
+	
+	/**
+	 * 根据id查询员工
+	 * @param id 需要查询的id
+	 * @return 员工信息
+	 */
+	Employee getById(Long id);
+	
+	/**
+	 * 编辑员工信息
+	 * @param employeeDTO 员工信息
+	 */
+	void update(EmployeeDTO employeeDTO);
 }

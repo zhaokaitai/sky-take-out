@@ -35,6 +35,7 @@ public interface EmployeeMapper {
 	
 	/**
 	 * 分页查询
+	 *
 	 * @param employeePageQueryDTO 查询条件
 	 * @return 查询结果
 	 */
@@ -42,7 +43,17 @@ public interface EmployeeMapper {
 	
 	/**
 	 * 根据主键动态修改属性
+	 *
 	 * @param employee 需要修改的实体类
 	 */
 	void update(Employee employee);
+	
+	/**
+	 * 根据id查询员工信息
+	 *
+	 * @param id 需要查询的id
+	 * @return 员工信息
+	 */
+	@Select("select * from employee where id = #{id}")
+	Employee getById(Long id);
 }
