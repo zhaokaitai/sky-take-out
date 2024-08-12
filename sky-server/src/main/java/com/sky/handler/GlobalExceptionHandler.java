@@ -8,15 +8,17 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 /**
  * 全局异常处理器，处理项目中抛出的业务异常
+ * @author zkt
  */
+
 @RestControllerAdvice
 @Slf4j
 public class GlobalExceptionHandler {
 
     /**
      * 捕获业务异常
-     * @param ex
-     * @return
+     * @param ex 异常
+     * @return 处理结果
      */
     @ExceptionHandler
     public Result exceptionHandler(BaseException ex){

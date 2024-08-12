@@ -4,6 +4,10 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
+/**
+ * @author zkt
+ */
+
 @Component
 @ConfigurationProperties(prefix = "sky.jwt")
 @Data
