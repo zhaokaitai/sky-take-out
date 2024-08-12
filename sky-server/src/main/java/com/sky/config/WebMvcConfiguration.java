@@ -14,6 +14,7 @@ import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 
+import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 
 /**
@@ -72,5 +73,13 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
         log.info("开始设置静态资源映射...");
 		registry.addResourceHandler("/doc.html").addResourceLocations("classpath:/META-INF/resources/");
 		registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
+	}
+	
+	/*
+	 * 解决druid 日志报错：discard long time none received connection:xxx
+	 * */
+	@PostConstruct
+	public void setProperties(){
+		System.setProperty("druid.mysql.usePingMethod","false");
 	}
 }

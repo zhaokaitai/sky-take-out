@@ -1,5 +1,8 @@
 package com.sky.context;
 
+/**
+ * @author zkt
+ */
 public class BaseContext {
 
     public static ThreadLocal<Long> threadLocal = new ThreadLocal<>();
