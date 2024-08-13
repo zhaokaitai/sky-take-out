@@ -7,6 +7,9 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author zkt
+ */
 @Data
 public class DishDTO implements Serializable {
 
