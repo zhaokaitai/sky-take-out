@@ -115,9 +115,17 @@
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
         </dependency>
+
+        <!--上传文件-->
         <dependency>
             <groupId>io.minio</groupId>
             <artifactId>minio</artifactId>
+        </dependency>
+
+        <!--Jackson依赖-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
         </dependency>
     </dependencies>
 

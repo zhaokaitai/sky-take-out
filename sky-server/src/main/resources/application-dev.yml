@@ -11,3 +11,8 @@ sky:
     secret-key: BNvgkyHLAkTBbU15mdY9LmRVOTBMXhooTHChVYuH
     endpoint: http://192.168.106.128:9000
     bucket: sky-take-out
+  redis:
+    host: 192.168.106.128
+    port: 6379
+    password: 123456
+    database: 0
