@@ -3,7 +3,7 @@ server:
 
 spring:
   profiles:
-    active: dev
+    active: dev,wechat
   main:
     allow-circular-references: true
   datasource:
@@ -53,6 +53,3 @@ sky:
     secret-key: ${sky.minio.secret-key}
     endpoint: ${sky.minio.endpoint}
     bucket: ${sky.minio.bucket}
-  wechat:
-    appid: ${sky.wechat.appid}
-    secret: ${sky.wechat.secret}
