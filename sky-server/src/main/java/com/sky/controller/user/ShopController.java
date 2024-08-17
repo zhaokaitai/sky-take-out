@@ -5,8 +5,10 @@ import com.sky.result.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 
@@ -24,7 +26,7 @@ import javax.annotation.Resource;
 public class ShopController {
 	
 	@Resource
-	private RedisTemplate redisTemplate;
+	private StringRedisTemplate stringRedisTemplate;
 	
 	/**
 	 * 获取店铺营业状态
@@ -34,7 +36,7 @@ public class ShopController {
 	@GetMapping("/status")
 	@ApiOperation("获取店铺营业状态")
 	public Result<Integer> getStatus() {
-		Integer status = (Integer) redisTemplate.opsForValue().get(RedisConstant.SHOP_STATUS_KEY);
+		Integer status = Integer.valueOf(stringRedisTemplate.opsForValue().get(RedisConstant.SHOP_STATUS_KEY));
 		log.info("获取到店铺的营业状态为：{}", status == 1 ? "营业中" : "打烊中");
 		return Result.success(status);
 	}
