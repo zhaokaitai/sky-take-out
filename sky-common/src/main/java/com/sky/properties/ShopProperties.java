@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
  **/
 
 @Component
-@ConfigurationProperties(prefix = "sky.config.shop")
+@ConfigurationProperties(prefix = "sky.shop")
 @PropertySource(value = "classpath:config/application-config.yml", factory = ConfigPropertySourceFactory.class)
 @Data
 public class ShopProperties {

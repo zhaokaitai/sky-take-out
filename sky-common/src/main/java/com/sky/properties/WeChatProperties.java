@@ -7,7 +7,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 @Component
-@ConfigurationProperties(prefix = "sky.config.wechat")
+@ConfigurationProperties(prefix = "sky.wechat")
 @PropertySource(value = "classpath:config/application-config.yml", factory = ConfigPropertySourceFactory.class)
 @Data
 public class WeChatProperties {
