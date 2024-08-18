@@ -13,7 +13,7 @@ import java.io.IOException;
  * @date 2024/8/16
  * @description 工厂转换类
  **/
-public class WeChatPropertySourceFactory implements PropertySourceFactory {
+public class ConfigPropertySourceFactory implements PropertySourceFactory {
 	@Override
 	public PropertySource<?> createPropertySource(String name, EncodedResource resource) throws IOException {
 		return new YamlPropertySourceLoader().load(name, resource.getResource()).get(0);

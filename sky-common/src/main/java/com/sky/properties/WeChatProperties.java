@@ -1,14 +1,14 @@
 package com.sky.properties;
 
-import com.sky.factory.WeChatPropertySourceFactory;
+import com.sky.factory.ConfigPropertySourceFactory;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 @Component
-@ConfigurationProperties(prefix = "sky.wechat")
-@PropertySource(value = "classpath:config/application-weichat.yml", factory = WeChatPropertySourceFactory.class)
+@ConfigurationProperties(prefix = "sky.config.wechat")
+@PropertySource(value = "classpath:config/application-config.yml", factory = ConfigPropertySourceFactory.class)
 @Data
 public class WeChatProperties {
 	
