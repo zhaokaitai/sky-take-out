@@ -23,6 +23,7 @@ import com.sky.vo.OrderPaymentVO;
 import com.sky.vo.OrderStatisticsVO;
 import com.sky.vo.OrderSubmitVO;
 import com.sky.vo.OrderVO;
+import com.sky.websocket.WebSocketServer;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
@@ -57,6 +58,7 @@ public class OrderServiceImpl implements OrderService {
 	private final WeChatPayUtil weChatPayUtil;
 	private final ShopProperties shopProperties;
 	private final BaiduProperties baiduProperties;
+	private final WebSocketServer webSocketServer;
 	
 	/**
 	 * 用户下单
@@ -174,6 +176,16 @@ public class OrderServiceImpl implements OrderService {
 				.build();
 		
 		orderMapper.update(orders);
+		
+		// 通过websocket向客户端浏览器推送消息
+		Map map = new HashMap();
+		// 1 表示来单提醒，2 表示客户催单
+		map.put("type", 1);
+		map.put("orderId", ordersDB.getId());
+		map.put("content", "订单号：" + outTradeNo);
+		
+		String json = JSON.toJSONString(map);
+		webSocketServer.sendToAllClient(json);
 	}
 	
 	/**
@@ -577,8 +589,8 @@ public class OrderServiceImpl implements OrderService {
 		JSONArray jsonArray = (JSONArray) result.get("routes");
 		Integer distance = (Integer) ((JSONObject) jsonArray.get(0)).get("distance");
 		
-		if (distance > 5000) {
-			// 配送距离超过5000米
+		if (distance > 50000) {
+			// 配送距离超过50000米
 			throw new OrderBusinessException("超出配送范围");
 		}
 	}
