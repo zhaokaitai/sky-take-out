@@ -131,7 +131,7 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public OrderPaymentVO payment(OrdersPaymentDTO ordersPaymentDTO) throws Exception {
 		// 当前登录用户id
-		Long userId = BaseContext.getCurrentId();
+		/*Long userId = BaseContext.getCurrentId();
 		User user = userMapper.getById(userId);
 		
 		// 调用微信支付接口，生成预支付交易单
@@ -147,9 +147,11 @@ public class OrderServiceImpl implements OrderService {
 		}
 		
 		OrderPaymentVO vo = jsonObject.toJavaObject(OrderPaymentVO.class);
-		vo.setPackageStr(jsonObject.getString("package"));
+		vo.setPackageStr(jsonObject.getString("package"));*/
 		
-		return vo;
+		paySuccess(ordersPaymentDTO.getOrderNumber());
+		
+		return null;
 	}
 	
 	/**
