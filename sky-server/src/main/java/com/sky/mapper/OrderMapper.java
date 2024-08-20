@@ -80,4 +80,12 @@ public interface OrderMapper {
 	 * @return 营业额数据
 	 */
 	Double sumByMap(Map map);
+	
+	/**
+	 * 根据动态条件统计订单数量
+	 *
+	 * @param map 条件
+	 * @return 统计数量
+	 */
+	Integer countByMap(Map map);
 }
